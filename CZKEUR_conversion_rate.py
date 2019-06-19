@@ -20,11 +20,10 @@ def insert_row():
 	'''prida radek v jiz existujicim csv'''
 	data2 = pd.DataFrame([[yahoo_currency_rate.get_current_price(), yahoo_currency_rate.get_current_change(), (yahoo_currency_rate.get_current_percent_change()*100)]],index = [time_stamp()])
 	with open(csv_name, mode = 'a', newline='') as f:
-        data2.to_csv(f, header = False)
+		data2.to_csv(f, header = False)
 		
 get_EURCZK(ticker)
 time.sleep(3600.0)
 while True:
     insert_row()
     time.sleep(3600.0)
-	
