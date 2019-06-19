@@ -11,7 +11,7 @@ def time_stamp():
     '''creates a time stamp (UTC time) as DD/MM/YYYY HH:MM:SS format'''
     return(datetime.datetime.utcnow().strftime("%d/%m/%Y %H:%M:%S"))  
 
-def get_EURCZK(ticker):
+def get_EURCZK():
     '''creates first row with headers and time_stamp as index into new csv file'''
     data = pd.DataFrame({"current_rate": yahoo_currency_rate.get_current_price(), "current_change": yahoo_currency_rate.get_current_change(), "current_change[%]": (yahoo_currency_rate.get_current_percent_change()*100)}, index = [time_stamp()])
     data.to_csv(csv_name)
@@ -22,7 +22,7 @@ def insert_row():
     with open(csv_name, mode = 'a', newline='') as f:
         data2.to_csv(f, header = False)
         
-get_EURCZK(ticker)
+get_EURCZK()
 time.sleep(3600.0)
 while True:
     insert_row()
