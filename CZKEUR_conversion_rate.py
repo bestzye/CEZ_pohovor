@@ -14,7 +14,7 @@ def time_stamp():
 def get_EURCZK(ticker):
 	'''vytvori prvni radek v csv vcetne nazvu sloupcu, indexem je time_stamp, ulozi nove csv'''
 	data = pd.DataFrame({"current_rate": yahoo_currency_rate.get_current_price(), "current_change": yahoo_currency_rate.get_current_change(), "current_change[%]": (yahoo_currency_rate.get_current_percent_change()*100)}, index = [time_stamp()])
-    data.to_csv(csv_name)
+	data.to_csv(csv_name)
 	
 def insert_row():
 	'''prida radek v jiz existujicim csv'''
